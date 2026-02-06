@@ -128,14 +128,14 @@ Material:
     - _RainIntensity: 1
     - _ReceiveShadows: 1
     - _RippleTile: 16
-    - _Smoothness: 0.594
+    - _Smoothness: 0.688
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 50
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Tiling: 1.08
+    - _Tiling: 3.93
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
