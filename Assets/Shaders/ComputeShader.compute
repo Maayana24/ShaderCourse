@@ -1,0 +1,31 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+
+struct TriangleData
+{
+    float3 positionOffset;
+    float3 velocity;
+    float lifetime;
+    float3 acceleration;
+};
+
+RWStructuredBuffer<TriangleData> triangleBuffer;
+float deltaTime;
+int triangleCount;
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+
+[numthreads(64, 1, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= (uint)triangleCount) return;
+
+    TriangleData tri = triangleBuffer[id.x];
+    tri.velocity += tri.acceleration * deltaTime;
+    tri.positionOffset += tri.velocity * deltaTime;
+    tri.lifetime -= deltaTime;
+    triangleBuffer[id.x] = tri;
+}
